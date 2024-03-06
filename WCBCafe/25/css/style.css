@@ -136,3 +136,18 @@ footer p{
     color:#fff;
     font-size:0.875rem;
 }
+
+/* news-contents의 메인기사와 사이드바를 수평으로 배열한다 */
+.news-contents{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:50px;
+}
+
+/* news-contents의 메인기사와 사이드바의 크기 설정 */
+article{
+    width:74%;
+}
+aside{
+    width:22%;
+}
