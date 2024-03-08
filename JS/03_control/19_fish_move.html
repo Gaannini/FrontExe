@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #panel {
+            width: 600px;
+            height: 400px;
+            border: 3px solid #999;
+            position: relative;
+        }
+
+        #fish {
+            position: absolute;
+            left: 50px;
+            top: 120px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const fish = document.getElementById('fish');
+
+            document.addEventListener('keydown', function (e) {
+                let currentPosition_left = fish.offsetLeft;
+                let currentPosition_top = fish.offsetTop;
+                console.log('현재 위치: (' + currentPosition_left + ', ' + currentPosition_top + ')');
+                console.log('입력 키 코드: ' + e.keyCode)
+                switch (e.keyCode) {
+                    case 37:
+                        console.log('방향키 좌 입력');
+                        if (currentPosition_left >= 1)
+                            fish.style.left = (currentPosition_left - 50) + 'px';
+                        break;
+                    case 39:
+                        console.log('방향키 우 입력');
+                        if (currentPosition_left <= 449)
+                            fish.style.left = (currentPosition_left + 50) + 'px';
+                        break;
+                    case 38:
+                        console.log('방향키 상 입력');
+                        if (currentPosition_top >= 25)
+                            fish.style.top = (currentPosition_top - 50) + 'px';
+                        break;
+                    case 40:
+                        console.log('방향키 하 입력');
+                        if (currentPosition_top <= 299)
+                            fish.style.top = (currentPosition_top + 50) + 'px';
+                        break;
+                }
+                console.log('바뀐 위치: (' + fish.offsetLeft + ', ' + fish.offsetTop + ')');
+            })
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="panel">
+        <img src="../../images2/fish.png" id="fish">
+    </div>
+</body>
+
+</html>
