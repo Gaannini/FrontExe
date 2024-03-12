@@ -43,19 +43,23 @@ meve_fish에서 button을 2개 생성
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            let id;
+            let id = null;
             let $fish = document.querySelector('#fish');
             let $startbutton = document.querySelector('#btnStart');
             let $stopbutton = document.querySelector('#btnStop');
-            const MOVE_VAL = 20;
+            const MOVE_VAL = 5;
             let step = MOVE_VAL;
             const MAX_X = 420;
             const MIN_X = 50;
+            let i = 0;
 
             $startbutton.addEventListener('click', () => {
+                //타이머가 작동하면 추가로 동작하지 못하도록
+                if (id !== null)
+                    return;
+
                 id = setInterval(() => {
                     let x = $fish.offsetLeft + step;
-                    console.log(step);
 
                     if (x >= MAX_X) {
                         x = MAX_X;
@@ -69,11 +73,12 @@ meve_fish에서 button을 2개 생성
                     }
 
                     $fish.style.left = x + 'px';
-                }, 100);
+                }, 10);
             });
 
             $stopbutton.addEventListener('click', () => {
                 clearInterval(id);
+                id = null;
             });
         });
     </script>
